@@ -30,12 +30,13 @@ dependencies:
   flutter:
     sdk: flutter
 
-
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   form_field_validator: ^1.1.0
   firebase_core: ^1.14.1
+  table_calendar: ^3.0.5
+  flutter_slidable: ^1.2.0
 
 dev_dependencies:
   flutter_test:
@@ -60,7 +61,6 @@ flutter:
   uses-material-design: true
   assets:
       - assets/images/person.png
-      - assets/images/Nine2Five.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:
