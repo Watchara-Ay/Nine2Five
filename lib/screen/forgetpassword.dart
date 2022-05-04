@@ -30,17 +30,6 @@ class forgetpassword extends StatelessWidget {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text("Username", style: TextStyle(fontSize: 20)),
-                    TextFormField(
-                      validator: RequiredValidator(
-                          errorText: "Please fill something!!!"),
-                      onSaved: (username) {
-                        profile.username = username!;
-                      },
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
                     const Text("Email", style: TextStyle(fontSize: 20)),
                     TextFormField(
                       validator: MultiValidator([
@@ -56,6 +45,18 @@ class forgetpassword extends StatelessWidget {
                       height: 10,
                     ),
                     const Text("Password", style: TextStyle(fontSize: 20)),
+                    TextFormField(
+                      validator: RequiredValidator(
+                          errorText: "Please fill something!!!"),
+                      obscureText: true,
+                      onSaved: (password) {
+                        profile.password = password!;
+                      },
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    const Text("New Password", style: TextStyle(fontSize: 20)),
                     TextFormField(
                       validator: RequiredValidator(
                           errorText: "Please fill something!!!"),

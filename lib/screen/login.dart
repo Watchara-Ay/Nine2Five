@@ -24,15 +24,15 @@ class LoginPage extends StatelessWidget {
         backgroundColor: Color.fromARGB(255, 255, 110, 110),
       ),
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(10, 100, 10, 10),
+        padding: const EdgeInsets.fromLTRB(10, 40, 10, 10),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Image.asset("assets/images/person.png"),
+              Image.asset("assets/images/Nine2Five.png"),
               const SizedBox(
                 height: 10,
               ),
-              const Text("Username", style: TextStyle(fontSize: 20)),
+              const Text("Username", style: TextStyle(fontSize: 14)),
               TextFormField(
                 validator:
                     RequiredValidator(errorText: "Please fill something!!!"),
@@ -43,7 +43,7 @@ class LoginPage extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              const Text("Password", style: TextStyle(fontSize: 20)),
+              const Text("Password", style: TextStyle(fontSize: 14)),
               TextFormField(
                 validator:
                     RequiredValidator(errorText: "Please fill something!!!"),
@@ -51,6 +51,9 @@ class LoginPage extends StatelessWidget {
                 onSaved: (password) {
                   profile.password = password!;
                 },
+              ),
+              const SizedBox(
+                height: 10,
               ),
               SizedBox(
                 width: double.infinity,
