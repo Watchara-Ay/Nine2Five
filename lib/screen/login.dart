@@ -101,12 +101,12 @@ class LoginPage extends StatelessWidget {
                 child: ElevatedButton.icon(
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(
-                        Color.fromARGB(255, 255, 110, 110)),
+                        const Color.fromARGB(255, 255, 110, 110)),
                   ),
                   icon: const Icon(Icons.app_registration),
                   label: const Text(
                     "Register",
-                    style: const TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: 20),
                   ),
                   onPressed: () {
                     Navigator.push(context,
