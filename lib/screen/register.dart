@@ -135,7 +135,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   formkey.currentState!.reset();
                                   Navigator.push(context,
                                       MaterialPageRoute(builder: (context) {
-                                    return const TodayPage();
+                                    return const homePage();
                                   }));
                                 }
                               },
