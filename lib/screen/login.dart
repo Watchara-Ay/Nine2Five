@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:nine2five/screen/forgetpassword.dart';
 import 'package:nine2five/screen/today.dart';
 import 'package:nine2five/screen/register.dart';
 import 'package:nine2five/model/profile.dart';
@@ -50,6 +51,24 @@ class LoginPage extends StatelessWidget {
                 onSaved: (password) {
                   profile.password = password!;
                 },
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton.icon(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(
+                        Color.fromARGB(255, 255, 110, 110)),
+                  ),
+                  icon: const Icon(Icons.edit),
+                  label: const Text("Forget password",
+                      style: TextStyle(fontSize: 14)),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return forgetpassword();
+                    }));
+                  },
+                ),
               ),
               const SizedBox(
                 height: 10,
