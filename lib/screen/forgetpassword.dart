@@ -21,7 +21,7 @@ class forgetpassword extends StatelessWidget {
           backgroundColor: const Color.fromARGB(255, 255, 110, 110),
         ),
         body: Padding(
-          padding: const EdgeInsets.all(100.0),
+          padding: const EdgeInsets.fromLTRB(10, 100, 10, 10),
           child: SingleChildScrollView(
             child: Row(
               children: [
