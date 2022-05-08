@@ -1,4 +1,4 @@
-class Profile {
+class information {
   String username;
   String firstname;
   String lastname;
@@ -6,7 +6,7 @@ class Profile {
   String email;
   String password;
 
-  Profile(
+  information(
       {required this.username,
       required this.firstname,
       required this.lastname,

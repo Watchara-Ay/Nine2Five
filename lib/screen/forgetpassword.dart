@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
-import 'package:nine2five/model/profile.dart';
+import 'package:nine2five/model/information.dart';
 import 'package:nine2five/screen/login.dart';
 
 class forgetpassword extends StatelessWidget {
   final formkey = GlobalKey<FormState>();
-  Profile profile = Profile(
+  information info = information(
       username: '',
       firstname: '',
       lastname: '',
@@ -38,7 +38,7 @@ class forgetpassword extends StatelessWidget {
                       ]),
                       keyboardType: TextInputType.emailAddress,
                       onSaved: (email) {
-                        profile.email = email!;
+                        info.email = email!;
                       },
                     ),
                     const SizedBox(
@@ -50,7 +50,7 @@ class forgetpassword extends StatelessWidget {
                           errorText: "Please fill something!!!"),
                       obscureText: true,
                       onSaved: (password) {
-                        profile.password = password!;
+                        info.password = password!;
                       },
                     ),
                     const SizedBox(
@@ -62,7 +62,7 @@ class forgetpassword extends StatelessWidget {
                           errorText: "Please fill something!!!"),
                       obscureText: true,
                       onSaved: (password) {
-                        profile.password = password!;
+                        info.password = password!;
                       },
                     ),
                     const SizedBox(
@@ -79,9 +79,9 @@ class forgetpassword extends StatelessWidget {
                         onPressed: () {
                           if (formkey.currentState!.validate()) {
                             formkey.currentState!.save();
-                            print("username = ${profile.username} "
-                                "email = ${profile.email} "
-                                "password = ${profile.password}");
+                            print("username = ${info.username} "
+                                "email = ${info.email} "
+                                "password = ${info.password}");
                             formkey.currentState!.reset();
                             Navigator.push(context,
                                 MaterialPageRoute(builder: (context) {

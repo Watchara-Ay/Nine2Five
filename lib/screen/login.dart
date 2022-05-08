@@ -3,11 +3,11 @@ import 'package:form_field_validator/form_field_validator.dart';
 import 'package:nine2five/screen/forgetpassword.dart';
 import 'package:nine2five/screen/today.dart';
 import 'package:nine2five/screen/register.dart';
-import 'package:nine2five/model/profile.dart';
+import 'package:nine2five/model/information.dart';
 
 class LoginPage extends StatelessWidget {
   final formkey = GlobalKey<FormState>();
-  Profile profile = Profile(
+  information info = information(
       username: '',
       firstname: '',
       lastname: '',
@@ -37,7 +37,7 @@ class LoginPage extends StatelessWidget {
                 validator:
                     RequiredValidator(errorText: "Please fill something!!!"),
                 onSaved: (username) {
-                  profile.username = username!;
+                  info.username = username!;
                 },
               ),
               const SizedBox(
@@ -49,7 +49,7 @@ class LoginPage extends StatelessWidget {
                     RequiredValidator(errorText: "Please fill something!!!"),
                 obscureText: true,
                 onSaved: (password) {
-                  profile.password = password!;
+                  info.password = password!;
                 },
               ),
               const SizedBox(

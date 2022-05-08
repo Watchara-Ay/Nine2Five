@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
-import 'package:nine2five/model/profile.dart';
+import 'package:nine2five/model/information.dart';
 import 'package:nine2five/screen/today.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -12,7 +12,7 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   final formkey = GlobalKey<FormState>();
-  Profile profile = Profile(
+  information info = information(
       username: '',
       firstname: '',
       lastname: '',
@@ -47,7 +47,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             validator: RequiredValidator(
                                 errorText: "Please fill something!!!"),
                             onSaved: (username) {
-                              profile.username = username!;
+                              info.username = username!;
                             },
                           ),
                           const SizedBox(
@@ -59,7 +59,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             validator: RequiredValidator(
                                 errorText: "Please fill something!!!"),
                             onSaved: (firstname) {
-                              profile.firstname = firstname!;
+                              info.firstname = firstname!;
                             },
                           ),
                           const SizedBox(
@@ -71,7 +71,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             validator: RequiredValidator(
                                 errorText: "Please fill something!!!"),
                             onSaved: (lastname) {
-                              profile.lastname = lastname!;
+                              info.lastname = lastname!;
                             },
                           ),
                           const SizedBox(
@@ -82,7 +82,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             validator: RequiredValidator(
                                 errorText: "Please fill something!!!"),
                             onSaved: (gender) {
-                              profile.gender = gender!;
+                              info.gender = gender!;
                             },
                           ),
                           const SizedBox(
@@ -96,7 +96,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ]),
                             keyboardType: TextInputType.emailAddress,
                             onSaved: (email) {
-                              profile.email = email!;
+                              info.email = email!;
                             },
                           ),
                           const SizedBox(
@@ -109,7 +109,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 errorText: "Please fill something!!!"),
                             obscureText: true,
                             onSaved: (password) {
-                              profile.password = password!;
+                              info.password = password!;
                             },
                           ),
                           const SizedBox(
@@ -126,12 +126,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               onPressed: () {
                                 if (formkey.currentState!.validate()) {
                                   formkey.currentState!.save();
-                                  print("username = ${profile.username} "
-                                      "firstname = ${profile.firstname} "
-                                      "lastname = ${profile.lastname} "
-                                      "gender = ${profile.gender} "
-                                      "email = ${profile.email} "
-                                      "password = ${profile.password}");
+                                  print("username = ${info.username} "
+                                      "firstname = ${info.firstname} "
+                                      "lastname = ${info.lastname} "
+                                      "gender = ${info.gender} "
+                                      "email = ${info.email} "
+                                      "password = ${info.password}");
                                   formkey.currentState!.reset();
                                   Navigator.push(context,
                                       MaterialPageRoute(builder: (context) {
