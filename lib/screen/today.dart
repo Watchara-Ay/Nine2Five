@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:nine2five/screen/login.dart';
+import 'package:nine2five/screen/profile.dart';
 import 'package:table_calendar/table_calendar.dart';
 //import 'package:flutter/material.dart';
 //import 'package:newtotolist/CheckList.dart';
@@ -82,6 +83,63 @@ class _homePageState extends State<homePage> {
                               : Colors.transparent,
                         )
                       ],
+                    ),
+                    SizedBox.fromSize(
+                      size: Size(64, 64),
+                      child: ClipOval(
+                        child: Material(
+                          color: Color.fromARGB(255, 38, 41, 123),
+                          child: InkWell(
+                            splashColor: Colors.green,
+                            onTap: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return profilepage();
+                              }));
+                            },
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Icon(Icons.account_circle), // <-- Icon
+                                Text(
+                                  "Profile",
+                                  style: TextStyle(
+                                      fontSize: 18, color: Colors.grey),
+                                ), // <-- Text
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox.fromSize(
+                      size: Size(64, 64),
+                      child: ClipOval(
+                        child: Material(
+                          color: Color.fromARGB(255, 38, 41, 123),
+                          child: InkWell(
+                            splashColor: Colors.green,
+                            onTap: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return LoginPage();
+                              }));
+                            },
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Icon(Icons.logout_sharp), // <-- Icon
+                                Text(
+                                  "Logout",
+                                  style: TextStyle(
+                                      fontSize: 18, color: Colors.grey),
+                                ),
+                                // <-- Text
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.end,
