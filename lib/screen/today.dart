@@ -85,6 +85,7 @@ class _homePageState extends State<homePage> {
                       ],
                     ),
                     SizedBox.fromSize(
+                      //button to profile
                       size: Size(64, 64),
                       child: ClipOval(
                         child: Material(
@@ -105,7 +106,7 @@ class _homePageState extends State<homePage> {
                                   "Profile",
                                   style: TextStyle(
                                       fontSize: 18, color: Colors.grey),
-                                ), // <-- Text
+                                ),
                               ],
                             ),
                           ),
@@ -113,6 +114,7 @@ class _homePageState extends State<homePage> {
                       ),
                     ),
                     SizedBox.fromSize(
+                      //button to logout
                       size: Size(64, 64),
                       child: ClipOval(
                         child: Material(
@@ -134,7 +136,6 @@ class _homePageState extends State<homePage> {
                                   style: TextStyle(
                                       fontSize: 18, color: Colors.grey),
                                 ),
-                                // <-- Text
                               ],
                             ),
                           ),
