@@ -21,6 +21,7 @@ class profilepage extends StatelessWidget {
     return FutureBuilder(builder: (context, snapshot) {
       return Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           centerTitle: true,
           title: const Text("Profile Page"),
           backgroundColor: Color.fromARGB(255, 255, 110, 110),
@@ -33,7 +34,8 @@ class profilepage extends StatelessWidget {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
+                      Align(
+                        alignment: Alignment.topCenter,
                         child: Image.asset("assets/images/person.png"),
                       ),
                       const SizedBox(

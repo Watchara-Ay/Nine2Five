@@ -19,6 +19,7 @@ class editprofilepage extends StatelessWidget {
     return FutureBuilder(builder: (context, snapshot) {
       return Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           centerTitle: true,
           title: const Text("Register Page"),
           backgroundColor: Color.fromARGB(255, 255, 110, 110),
