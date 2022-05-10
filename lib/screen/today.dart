@@ -181,11 +181,10 @@ class _homePageState extends State<homePage> {
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: const <Widget>[
-                                    Icon(Icons.edit), // <-- Icon
                                     Text(
-                                      "Edit profile",
+                                      "+",
                                       style: TextStyle(
-                                          fontSize: 18, color: Colors.grey),
+                                          fontSize: 18, color: Colors.white),
                                     ),
                                   ],
                                 ),
