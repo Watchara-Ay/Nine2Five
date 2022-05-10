@@ -21,13 +21,20 @@ class LoginPage extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         centerTitle: true,
-        title: const Text("Login Page"),
-        backgroundColor: Color.fromARGB(255, 255, 110, 110),
+        title: new Text("Nine 2 Five",
+            style: const TextStyle(
+                color: const Color(0xffffffff),
+                fontWeight: FontWeight.w500,
+                fontFamily: "Roboto",
+                fontStyle: FontStyle.normal,
+                fontSize: 19.0)),
+        // backgroundColor: Color.fromARGB(255, 253, 193, 172),
       ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(10, 40, 10, 10),
         child: SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Image.asset("assets/images/Nine2Five.png"),
               const SizedBox(
@@ -81,8 +88,8 @@ class LoginPage extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton.icon(
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(
-                        Color.fromARGB(255, 255, 110, 110)),
+                    backgroundColor:
+                        MaterialStateProperty.all(Color.fromARGB(255, 0, 0, 0)),
                   ),
                   icon: const Icon(Icons.login),
                   label: const Text("Login", style: TextStyle(fontSize: 20)),
