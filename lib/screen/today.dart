@@ -219,7 +219,7 @@ class _homePageState extends State<homePage> {
                       children: [
                         SizedBox.fromSize(
                           //button to logout
-                          size: Size(86, 86),
+                          size: Size(64, 64),
                           child: ClipOval(
                             child: Material(
                               color: Color.fromARGB(255, 255, 110, 110),

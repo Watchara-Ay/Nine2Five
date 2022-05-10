@@ -76,7 +76,8 @@ class forgetpassword extends StatelessWidget {
                           backgroundColor: MaterialStateProperty.all(
                               Color.fromARGB(255, 255, 110, 110)),
                         ),
-                        child: const Text("Submit"),
+                        child: const Text("Submit",
+                            style: TextStyle(fontSize: 26)),
                         onPressed: () {
                           if (formkey.currentState!.validate()) {
                             formkey.currentState!.save();

@@ -87,7 +87,7 @@ class addnewtask extends StatelessWidget {
                       const SizedBox(
                         height: 10,
                       ),
-                      const Text("etime", style: TextStyle(fontSize: 20)),
+                      const Text("End time", style: TextStyle(fontSize: 20)),
                       TextFormField(
                         validator: RequiredValidator(
                             errorText: "Please fill something!!!"),

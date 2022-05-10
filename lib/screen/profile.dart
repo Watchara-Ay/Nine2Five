@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:form_field_validator/form_field_validator.dart';
 import 'package:nine2five/model/information.dart';
 import 'package:nine2five/screen/Editprofile.dart';
-import 'package:nine2five/screen/addnewtask.dart';
-import 'package:nine2five/screen/login.dart';
 import 'package:nine2five/screen/today.dart';
 
 class profilepage extends StatelessWidget {
@@ -26,11 +23,14 @@ class profilepage extends StatelessWidget {
           automaticallyImplyLeading: false,
           centerTitle: true,
           title: const Text("Profile Page"),
-          backgroundColor: Color.fromARGB(255, 255, 110, 110),
+          backgroundColor: const Color.fromARGB(255, 255, 110, 110),
         ),
         body: Container(
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          color: Color.fromARGB(0, 0, 0, 0),
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(0, 120, 0, 0),
+            padding: const EdgeInsets.fromLTRB(0, 19, 0, 0),
             child: Form(
               child: SingleChildScrollView(
                 child: Column(
@@ -40,53 +40,56 @@ class profilepage extends StatelessWidget {
                       alignment: Alignment.topCenter,
                       child: Image.asset("assets/images/person.png"),
                     ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(
-                          height: 10,
+                    Container(
+                      height: MediaQuery.of(context).size.height / 1.835,
+                      width: MediaQuery.of(context).size.width,
+                      padding: EdgeInsets.all(20),
+                      alignment: Alignment.bottomCenter,
+                      child: Column(children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Container(
+                                child: const Text("Username: SomMai",
+                                    style: TextStyle(fontSize: 20))),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Container(
+                                child: const Text("Firstname: Somjing",
+                                    style: TextStyle(fontSize: 20))),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Container(
+                                child: const Text("Lastname: Maijingniyay",
+                                    style: TextStyle(fontSize: 20))),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Container(
+                                child: const Text("Age: 340",
+                                    style: TextStyle(fontSize: 20))),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Container(
+                                child: const Text("Gender: Male",
+                                    style: TextStyle(fontSize: 20))),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                          ],
                         ),
-                        Container(
-                            alignment: Alignment.center,
-                            child: const Text("Username: SomMai",
-                                style: TextStyle(fontSize: 20))),
-                        const SizedBox(
-                          height: 5,
-                        ),
-                        Container(
-                            alignment: Alignment.center,
-                            child: const Text("Firstname: Somjing",
-                                style: TextStyle(fontSize: 20))),
-                        const SizedBox(
-                          height: 5,
-                        ),
-                        Container(
-                            alignment: Alignment.center,
-                            child: const Text("Lastname: Maijingniyay",
-                                style: TextStyle(fontSize: 20))),
-                        const SizedBox(
-                          height: 5,
-                        ),
-                        Container(
-                            alignment: Alignment.center,
-                            child: const Text("Age: 340",
-                                style: TextStyle(fontSize: 20))),
-                        const SizedBox(
-                          height: 5,
-                        ),
-                        Container(
-                            alignment: Alignment.center,
-                            child: const Text("Gender: Male",
-                                style: TextStyle(fontSize: 20))),
-                        const SizedBox(
-                          height: 5,
-                        ),
-                      ],
+                      ]),
                     ),
                     Container(
+                      alignment: FractionalOffset.bottomCenter,
                       height: 70,
-                      color: Color(0xff292e4e),
+                      color: const Color(0xff292e4e),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
@@ -98,9 +101,10 @@ class profilepage extends StatelessWidget {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => homePage()));
+                                          builder: (context) =>
+                                              const homePage()));
                                 }),
-                                child: Text(
+                                child: const Text(
                                   "Mytask",
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 18),
@@ -119,7 +123,7 @@ class profilepage extends StatelessWidget {
                                           builder: (context) =>
                                               editprofilepage()));
                                 }),
-                                child: Text(
+                                child: const Text(
                                   "Edit profile",
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 18),

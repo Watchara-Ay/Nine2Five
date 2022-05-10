@@ -22,84 +22,94 @@ class editprofilepage extends StatelessWidget {
         appBar: AppBar(
           automaticallyImplyLeading: false,
           centerTitle: true,
-          title: const Text("Register Page"),
+          title: const Text("Edit profile"),
           backgroundColor: Color.fromARGB(255, 255, 110, 110),
         ),
         body: Container(
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(0, 60, 0, 0),
+            padding: const EdgeInsets.fromLTRB(0, 38, 0, 0),
             child: Form(
               child: SingleChildScrollView(
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text("Firstname", style: TextStyle(fontSize: 20)),
-                      TextFormField(
-                        validator: RequiredValidator(
-                            errorText: "Please fill something!!!"),
-                        onSaved: (firstname) {
-                          info.firstname = firstname!;
-                        },
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      const Text("Lastname", style: TextStyle(fontSize: 20)),
-                      TextFormField(
-                        validator: RequiredValidator(
-                            errorText: "Please fill something!!!"),
-                        onSaved: (lastname) {
-                          info.lastname = lastname!;
-                        },
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      const Text("Age", style: TextStyle(fontSize: 20)),
-                      TextFormField(
-                        validator:
-                            RequiredValidator(errorText: "Please fill age!!!"),
-                        onSaved: (age) {
-                          info.age = age! as int;
-                        },
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      const Text("Gender", style: TextStyle(fontSize: 20)),
-                      TextFormField(
-                        validator: RequiredValidator(
-                            errorText: "Please fill something!!!"),
-                        onSaved: (gender) {
-                          info.gender = gender!;
-                        },
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(
-                                Color.fromARGB(255, 255, 110, 110)),
+                      Container(
+                        height: MediaQuery.of(context).size.height / 1.3,
+                        width: MediaQuery.of(context).size.width,
+                        padding: EdgeInsets.all(20),
+                        alignment: Alignment.bottomCenter,
+                        child: Column(children: [
+                          const Text("Firstname",
+                              style: TextStyle(fontSize: 20)),
+                          TextFormField(
+                            validator: RequiredValidator(
+                                errorText: "Please fill something!!!"),
+                            onSaved: (firstname) {
+                              info.firstname = firstname!;
+                            },
                           ),
-                          child: const Text("Confirm"),
-                          onPressed: () {
-                            if (formkey.currentState!.validate()) {
-                              formkey.currentState!.save();
-                              print("firstname = ${info.firstname} "
-                                  "lastname = ${info.lastname} "
-                                  "age = ${info.age} "
-                                  "gender = ${info.gender} ");
-                              formkey.currentState!.reset();
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) {
-                                return const homePage();
-                              }));
-                            }
-                          },
-                        ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          const Text("Lastname",
+                              style: TextStyle(fontSize: 20)),
+                          TextFormField(
+                            validator: RequiredValidator(
+                                errorText: "Please fill something!!!"),
+                            onSaved: (lastname) {
+                              info.lastname = lastname!;
+                            },
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          const Text("Age", style: TextStyle(fontSize: 20)),
+                          TextFormField(
+                            validator: RequiredValidator(
+                                errorText: "Please fill age!!!"),
+                            onSaved: (age) {
+                              info.age = age! as int;
+                            },
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          const Text("Gender", style: TextStyle(fontSize: 20)),
+                          TextFormField(
+                            validator: RequiredValidator(
+                                errorText: "Please fill something!!!"),
+                            onSaved: (gender) {
+                              info.gender = gender!;
+                            },
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          SizedBox(
+                            width: double.infinity,
+                            child: ElevatedButton(
+                              style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all(
+                                    Color.fromARGB(255, 255, 110, 110)),
+                              ),
+                              child: const Text("Confirm"),
+                              onPressed: () {
+                                if (formkey.currentState!.validate()) {
+                                  formkey.currentState!.save();
+                                  print("firstname = ${info.firstname} "
+                                      "lastname = ${info.lastname} "
+                                      "age = ${info.age} "
+                                      "gender = ${info.gender} ");
+                                  formkey.currentState!.reset();
+                                  Navigator.push(context,
+                                      MaterialPageRoute(builder: (context) {
+                                    return const homePage();
+                                  }));
+                                }
+                              },
+                            ),
+                          ),
+                        ]),
                       ),
                       Container(
                         height: 70,
