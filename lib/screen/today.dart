@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:nine2five/screen/addnewtask.dart';
 import 'package:nine2five/screen/login.dart';
 import 'package:nine2five/screen/profile.dart';
 import 'package:nine2five/screen/taskdetail.dart';
@@ -162,6 +163,39 @@ class _homePageState extends State<homePage> {
                       ],
                     ),
                     Column(
+                      children: [
+                        SizedBox.fromSize(
+                          //button to logout
+                          size: Size(86, 86),
+                          child: ClipOval(
+                            child: Material(
+                              color: Colors.red,
+                              child: InkWell(
+                                splashColor: Colors.white,
+                                onTap: (() {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => addnewtask()));
+                                }),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: const <Widget>[
+                                    Icon(Icons.edit), // <-- Icon
+                                    Text(
+                                      "Edit profile",
+                                      style: TextStyle(
+                                          fontSize: 18, color: Colors.grey),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         InkWell(
@@ -178,7 +212,6 @@ class _homePageState extends State<homePage> {
                         ),
                       ],
                     ),
-                    Column(mainAxisAlignment: MainAxisAlignment.start)
                   ],
                 ),
               ),
