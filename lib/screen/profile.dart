@@ -29,7 +29,13 @@ class profilepage extends StatelessWidget {
             child: Form(
               child: SingleChildScrollView(
                 child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start, children: []),
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Image.asset("assets/images/person.png"),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                    ]),
               ),
             ),
           ),

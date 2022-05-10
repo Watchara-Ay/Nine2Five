@@ -47,6 +47,7 @@ class _homePageState extends State<homePage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               AppBar(
+                automaticallyImplyLeading: false,
                 backgroundColor: Color(0xfff96060),
                 elevation: 0,
                 title: Text(
