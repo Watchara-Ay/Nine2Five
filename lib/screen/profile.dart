@@ -21,6 +21,7 @@ class profilepage extends StatelessWidget {
     return FutureBuilder(builder: (context, snapshot) {
       return Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           centerTitle: true,
           title: const Text("Profile Page"),
           backgroundColor: Color.fromARGB(255, 255, 110, 110),
