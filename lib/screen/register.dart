@@ -16,6 +16,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       username: '',
       firstname: '',
       lastname: '',
+      age: 0,
       gender: '',
       email: '',
       password: '');
@@ -77,6 +78,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           const SizedBox(
                             height: 10,
                           ),
+                          const Text("Age", style: TextStyle(fontSize: 20)),
+                          TextFormField(
+                            validator: RequiredValidator(
+                                errorText: "Please fill age!!!"),
+                            onSaved: (age) {
+                              info.age = age! as int;
+                            },
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
                           const Text("Gender", style: TextStyle(fontSize: 20)),
                           TextFormField(
                             validator: RequiredValidator(
@@ -129,6 +141,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   print("username = ${info.username} "
                                       "firstname = ${info.firstname} "
                                       "lastname = ${info.lastname} "
+                                      "age = ${info.age} "
                                       "gender = ${info.gender} "
                                       "email = ${info.email} "
                                       "password = ${info.password}");

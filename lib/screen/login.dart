@@ -11,6 +11,7 @@ class LoginPage extends StatelessWidget {
       username: '',
       firstname: '',
       lastname: '',
+      age: 0,
       gender: '',
       email: '',
       password: '');
@@ -23,15 +24,15 @@ class LoginPage extends StatelessWidget {
         centerTitle: true,
         title: new Text("Nine 2 Five",
             style: const TextStyle(
-                color: const Color(0xffffffff),
+                color: Color.fromARGB(255, 255, 255, 255),
                 fontWeight: FontWeight.w500,
                 fontFamily: "Roboto",
                 fontStyle: FontStyle.normal,
-                fontSize: 19.0)),
-        // backgroundColor: Color.fromARGB(255, 253, 193, 172),
+                fontSize: 24.00)),
+        backgroundColor: Color.fromARGB(255, 255, 110, 110),
       ),
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(10, 40, 10, 10),
+        padding: const EdgeInsets.fromLTRB(20, 40, 20, 10),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

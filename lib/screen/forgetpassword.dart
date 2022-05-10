@@ -9,6 +9,7 @@ class forgetpassword extends StatelessWidget {
       username: '',
       firstname: '',
       lastname: '',
+      age: 0,
       gender: '',
       email: '',
       password: '');

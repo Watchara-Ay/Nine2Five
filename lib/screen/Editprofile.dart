@@ -10,6 +10,7 @@ class editprofilepage extends StatelessWidget {
       username: '',
       firstname: '',
       lastname: '',
+      age: 0,
       gender: '',
       email: '',
       password: '');
@@ -26,7 +27,7 @@ class editprofilepage extends StatelessWidget {
         ),
         body: Container(
           child: Padding(
-            padding: const EdgeInsets.all(30.0),
+            padding: const EdgeInsets.fromLTRB(0, 60, 0, 0),
             child: Form(
               child: SingleChildScrollView(
                 child: Column(
@@ -49,6 +50,17 @@ class editprofilepage extends StatelessWidget {
                             errorText: "Please fill something!!!"),
                         onSaved: (lastname) {
                           info.lastname = lastname!;
+                        },
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      const Text("Age", style: TextStyle(fontSize: 20)),
+                      TextFormField(
+                        validator:
+                            RequiredValidator(errorText: "Please fill age!!!"),
+                        onSaved: (age) {
+                          info.age = age! as int;
                         },
                       ),
                       const SizedBox(
@@ -78,6 +90,7 @@ class editprofilepage extends StatelessWidget {
                               formkey.currentState!.save();
                               print("firstname = ${info.firstname} "
                                   "lastname = ${info.lastname} "
+                                  "age = ${info.age} "
                                   "gender = ${info.gender} ");
                               formkey.currentState!.reset();
                               Navigator.push(context,
@@ -88,62 +101,50 @@ class editprofilepage extends StatelessWidget {
                           },
                         ),
                       ),
-                      SizedBox.fromSize(
-                        //button to today
-                        size: Size(64, 64),
-                        child: ClipOval(
-                          child: Material(
-                            color: Color.fromARGB(255, 38, 41, 123),
-                            child: InkWell(
-                              splashColor: Colors.green,
-                              onTap: () {
-                                Navigator.push(context,
-                                    MaterialPageRoute(builder: (context) {
-                                  return homePage();
-                                }));
-                              },
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: const <Widget>[
-                                  Icon(Icons.home), // <-- Icon
-                                  Text(
+                      Container(
+                        height: 70,
+                        color: Color(0xff292e4e),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                InkWell(
+                                  onTap: (() {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => homePage()));
+                                  }),
+                                  child: Text(
                                     "Mytask",
                                     style: TextStyle(
-                                        fontSize: 18, color: Colors.grey),
+                                        color: Colors.white, fontSize: 18),
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
-                          ),
-                        ),
-                      ),
-                      SizedBox.fromSize(
-                        //button to profile
-                        size: Size(64, 64),
-                        child: ClipOval(
-                          child: Material(
-                            color: Color.fromARGB(255, 38, 41, 123),
-                            child: InkWell(
-                              splashColor: Colors.green,
-                              onTap: () {
-                                Navigator.push(context,
-                                    MaterialPageRoute(builder: (context) {
-                                  return profilepage();
-                                }));
-                              },
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Icon(Icons.account_circle), // <-- Icon
-                                  Text(
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                InkWell(
+                                  onTap: (() {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                profilepage()));
+                                  }),
+                                  child: Text(
                                     "Profile",
                                     style: TextStyle(
-                                        fontSize: 18, color: Colors.grey),
+                                        color: Colors.white, fontSize: 18),
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
-                          ),
+                          ],
                         ),
                       ),
                     ]),

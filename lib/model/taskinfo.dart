@@ -5,8 +5,8 @@ class taskinfo {
   String tdetail;
   DateTime tdate;
   String priority;
-  Timer stime;
-  Timer etime;
+  DateTime stime;
+  DateTime etime;
 
   taskinfo({
     required this.tname,

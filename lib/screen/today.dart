@@ -169,9 +169,9 @@ class _homePageState extends State<homePage> {
                           size: Size(86, 86),
                           child: ClipOval(
                             child: Material(
-                              color: Colors.red,
+                              color: Color.fromARGB(255, 255, 110, 110),
                               child: InkWell(
-                                splashColor: Colors.white,
+                                splashColor: Color.fromARGB(255, 255, 255, 255),
                                 onTap: (() {
                                   Navigator.push(
                                       context,
