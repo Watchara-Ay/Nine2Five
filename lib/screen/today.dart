@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:nine2five/screen/login.dart';
 import 'package:nine2five/screen/profile.dart';
+import 'package:nine2five/screen/taskdetail.dart';
 import 'package:table_calendar/table_calendar.dart';
 //import 'package:flutter/material.dart';
 //import 'package:newtotolist/CheckList.dart';
@@ -85,64 +86,6 @@ class _homePageState extends State<homePage> {
                         )
                       ],
                     ),
-                    SizedBox.fromSize(
-                      //button to profile
-                      size: Size(64, 64),
-                      child: ClipOval(
-                        child: Material(
-                          color: Color.fromARGB(255, 38, 41, 123),
-                          child: InkWell(
-                            splashColor: Colors.green,
-                            onTap: () {
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) {
-                                return profilepage();
-                              }));
-                            },
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Icon(Icons.account_circle), // <-- Icon
-                                Text(
-                                  "Profile",
-                                  style: TextStyle(
-                                      fontSize: 18, color: Colors.grey),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox.fromSize(
-                      //button to logout
-                      size: Size(64, 64),
-                      child: ClipOval(
-                        child: Material(
-                          color: Color.fromARGB(255, 38, 41, 123),
-                          child: InkWell(
-                            splashColor: Colors.green,
-                            onTap: () {
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) {
-                                return LoginPage();
-                              }));
-                            },
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Icon(Icons.logout_sharp), // <-- Icon
-                                Text(
-                                  "Logout",
-                                  style: TextStyle(
-                                      fontSize: 18, color: Colors.grey),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
@@ -196,88 +139,49 @@ class _homePageState extends State<homePage> {
                 ),
               ),
               Container(
-                height: 110,
-                child: Stack(
+                height: 70,
+                color: Color(0xff292e4e),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Positioned(
-                      bottom: 0,
-                      child: Container(
-                        height: 90,
-                        width: MediaQuery.of(context).size.width,
-                        color: Color(0xff292e4e),
-                        padding: EdgeInsets.all(20),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Container(
-                              child: Column(
-                                children: [
-                                  Icon(
-                                    Icons.account_circle,
-                                    color: Colors.white,
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text(
-                                    "Profile",
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 15),
-                                  )
-                                ],
-                              ),
-                            ),
-                            Container(
-                              child: Column(
-                                children: [
-                                  Icon(
-                                    Icons.logout,
-                                    color: Colors.white,
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ),
-                                  Text(
-                                    "Logout",
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 15),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 25,
-                      left: 0,
-                      right: 0,
-                      child: InkWell(
-                        onTap: openTaskPop,
-                        child: Container(
-                          height: 85,
-                          width: 85,
-                          decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                begin: Alignment.topRight,
-                                end: Alignment.bottomLeft,
-                                colors: [Color(0xfff96060), Colors.red],
-                              ),
-                              shape: BoxShape.circle),
-                          child: Center(
-                            child: Text(
-                              "+",
-                              style:
-                                  TextStyle(fontSize: 30, color: Colors.white),
-                            ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        InkWell(
+                          onTap: (() {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => profilepage()));
+                          }),
+                          child: Text(
+                            "Profile",
+                            style: TextStyle(color: Colors.white, fontSize: 18),
                           ),
                         ),
-                      ),
-                    )
+                      ],
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        InkWell(
+                          onTap: (() {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => LoginPage()));
+                          }),
+                          child: Text(
+                            "Logout",
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Column(mainAxisAlignment: MainAxisAlignment.start)
                   ],
                 ),
-              )
+              ),
             ],
           ),
           Container(
