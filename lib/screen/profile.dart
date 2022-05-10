@@ -34,7 +34,8 @@ class profilepage extends StatelessWidget {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
+                      Align(
+                        alignment: Alignment.topCenter,
                         child: Image.asset("assets/images/person.png"),
                       ),
                       const SizedBox(
