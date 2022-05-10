@@ -1,19 +1,29 @@
-//import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:nine2five/screen/addnewtask.dart';
 import 'package:nine2five/screen/login.dart';
 import 'package:nine2five/screen/profile.dart';
 import 'package:nine2five/screen/taskdetail.dart';
-import 'package:table_calendar/table_calendar.dart';
-//import 'package:flutter/material.dart';
-//import 'package:newtotolist/CheckList.dart';
-//import 'package:newtotolist/NewTask.dart';
+import 'package:table_calendar/table_calendar.dart'
+    show
+        CalendarController,
+        CalendarFormat,
+        StartingDayOfWeek,
+        TableCalendar,
+        isSameDay;
 import 'package:flutter_slidable/flutter_slidable.dart';
-//import 'package:newtotolist/NewNote.dart';
+
+class HomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(fontFamily: 'avenir'),
+      home: homePage(),
+    );
+  }
+}
 
 class homePage extends StatefulWidget {
   const homePage({Key? key}) : super(key: key);
@@ -22,6 +32,8 @@ class homePage extends StatefulWidget {
 }
 
 class _homePageState extends State<homePage> {
+  DateTime _selectedDay = DateTime.now();
+  DateTime _focusedDay = DateTime.now();
   String filterType = "today";
   DateTime today = new DateTime.now();
   String taskPop = "close";
@@ -39,7 +51,6 @@ class _homePageState extends State<homePage> {
     "NOV",
     "DEC"
   ];
-  CalendarBuilders ctrlr = new CalendarBuilders();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -114,6 +125,27 @@ class _homePageState extends State<homePage> {
                   ],
                 ),
               ),
+              (filterType == "weekly")
+                  ? TableCalendar(
+                      calendarFormat: CalendarFormat.twoWeeks,
+                      firstDay: DateTime.utc(2010, 10, 16),
+                      lastDay: DateTime.utc(2030, 3, 14),
+                      focusedDay: _focusedDay,
+                      selectedDayPredicate: (day) {
+                        return isSameDay(_selectedDay, day);
+                      },
+                      onDaySelected: (selectedDay, focusedDay) {
+                        setState(() {
+                          _selectedDay = selectedDay;
+                          _focusedDay =
+                              focusedDay; // update `_focusedDay` here as well
+                        });
+                      },
+                      onPageChanged: (focusedDay) {
+                        _focusedDay = focusedDay;
+                      },
+                    )
+                  : Container(),
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(
@@ -128,13 +160,34 @@ class _homePageState extends State<homePage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "Today ${monthNames[today.month - 1]}, ${today.day}/${today.year}",
+                              "TODAY ${monthNames[today.month - 1]}, ${today.day}/${today.year}",
                               style:
-                                  TextStyle(fontSize: 18, color: Colors.grey),
+                                  TextStyle(fontSize: 20, color: Colors.grey),
                             )
                           ],
                         ),
                       ),
+                      /*Container(
+                        child: TableCalendar(
+                          calendarFormat: CalendarFormat.twoWeeks,
+                          firstDay: DateTime.utc(2010, 10, 16),
+                          lastDay: DateTime.utc(2030, 3, 14),
+                          focusedDay: _focusedDay,
+                          selectedDayPredicate: (day) {
+                            return isSameDay(_selectedDay, day);
+                          },
+                          onDaySelected: (selectedDay, focusedDay) {
+                            setState(() {
+                              _selectedDay = selectedDay;
+                              _focusedDay =
+                                  focusedDay; // update `_focusedDay` here as well
+                            });
+                          },
+                          onPageChanged: (focusedDay) {
+                            _focusedDay = focusedDay;
+                          },
+                        ),
+                      ),*/
                     ],
                   ),
                 ),
