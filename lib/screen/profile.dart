@@ -25,15 +25,47 @@ class profilepage extends StatelessWidget {
         ),
         body: Container(
           child: Padding(
-            padding: const EdgeInsets.all(30.0),
+            padding: const EdgeInsets.fromLTRB(100, 120, 0, 0),
             child: Form(
               child: SingleChildScrollView(
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Image.asset("assets/images/person.png"),
+                      Container(
+                        child: Image.asset("assets/images/person.png"),
+                      ),
                       const SizedBox(
                         height: 10,
+                      ),
+                      Container(
+                          child: const Text("Username:  SomMai",
+                              style: TextStyle(fontSize: 20))),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Container(
+                          child: const Text("Firstname:  Somjing",
+                              style: TextStyle(fontSize: 20))),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Container(
+                          child: const Text("Lastname:  Maijingniyay",
+                              style: TextStyle(fontSize: 20))),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Container(
+                          child: const Text("Age:             340",
+                              style: TextStyle(fontSize: 20))),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Container(
+                          child: const Text("Gender:       Male",
+                              style: TextStyle(fontSize: 20))),
+                      const SizedBox(
+                        height: 5,
                       ),
                     ]),
               ),
