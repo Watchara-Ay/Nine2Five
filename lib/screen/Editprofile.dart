@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:nine2five/model/information.dart';
-import 'package:nine2five/screen/Editprofile.dart';
-import 'package:nine2five/screen/login.dart';
+import 'package:nine2five/screen/profile.dart';
 import 'package:nine2five/screen/today.dart';
 
-class profilepage extends StatelessWidget {
+class editprofilepage extends StatelessWidget {
   final formkey = GlobalKey<FormState>();
   information info = information(
       username: '',
@@ -22,52 +20,72 @@ class profilepage extends StatelessWidget {
       return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: const Text("Profile Page"),
+          title: const Text("Register Page"),
           backgroundColor: Color.fromARGB(255, 255, 110, 110),
         ),
         body: Container(
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(100, 120, 0, 0),
+            padding: const EdgeInsets.all(30.0),
             child: Form(
               child: SingleChildScrollView(
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                        child: Image.asset("assets/images/person.png"),
+                      const Text("Firstname", style: TextStyle(fontSize: 20)),
+                      TextFormField(
+                        validator: RequiredValidator(
+                            errorText: "Please fill something!!!"),
+                        onSaved: (firstname) {
+                          info.firstname = firstname!;
+                        },
                       ),
                       const SizedBox(
                         height: 10,
                       ),
-                      Container(
-                          child: const Text("Username:  SomMai",
-                              style: TextStyle(fontSize: 20))),
-                      const SizedBox(
-                        height: 5,
+                      const Text("Lastname", style: TextStyle(fontSize: 20)),
+                      TextFormField(
+                        validator: RequiredValidator(
+                            errorText: "Please fill something!!!"),
+                        onSaved: (lastname) {
+                          info.lastname = lastname!;
+                        },
                       ),
-                      Container(
-                          child: const Text("Firstname:  Somjing",
-                              style: TextStyle(fontSize: 20))),
                       const SizedBox(
-                        height: 5,
+                        height: 10,
                       ),
-                      Container(
-                          child: const Text("Lastname:  Maijingniyay",
-                              style: TextStyle(fontSize: 20))),
-                      const SizedBox(
-                        height: 5,
+                      const Text("Gender", style: TextStyle(fontSize: 20)),
+                      TextFormField(
+                        validator: RequiredValidator(
+                            errorText: "Please fill something!!!"),
+                        onSaved: (gender) {
+                          info.gender = gender!;
+                        },
                       ),
-                      Container(
-                          child: const Text("Age:             340",
-                              style: TextStyle(fontSize: 20))),
                       const SizedBox(
-                        height: 5,
+                        height: 10,
                       ),
-                      Container(
-                          child: const Text("Gender:       Male",
-                              style: TextStyle(fontSize: 20))),
-                      const SizedBox(
-                        height: 5,
+                      SizedBox(
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(
+                                Color.fromARGB(255, 255, 110, 110)),
+                          ),
+                          child: const Text("Confirm"),
+                          onPressed: () {
+                            if (formkey.currentState!.validate()) {
+                              formkey.currentState!.save();
+                              print("firstname = ${info.firstname} "
+                                  "lastname = ${info.lastname} "
+                                  "gender = ${info.gender} ");
+                              formkey.currentState!.reset();
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return const homePage();
+                              }));
+                            }
+                          },
+                        ),
                       ),
                       SizedBox.fromSize(
                         //button to today
@@ -99,8 +117,8 @@ class profilepage extends StatelessWidget {
                         ),
                       ),
                       SizedBox.fromSize(
-                        //button to logout
-                        size: Size(86, 86),
+                        //button to profile
+                        size: Size(64, 64),
                         child: ClipOval(
                           child: Material(
                             color: Color.fromARGB(255, 38, 41, 123),
@@ -109,15 +127,15 @@ class profilepage extends StatelessWidget {
                               onTap: () {
                                 Navigator.push(context,
                                     MaterialPageRoute(builder: (context) {
-                                  return editprofilepage();
+                                  return profilepage();
                                 }));
                               },
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                children: const <Widget>[
-                                  Icon(Icons.edit), // <-- Icon
+                                children: <Widget>[
+                                  Icon(Icons.account_circle), // <-- Icon
                                   Text(
-                                    "Edit profile",
+                                    "Profile",
                                     style: TextStyle(
                                         fontSize: 18, color: Colors.grey),
                                   ),
