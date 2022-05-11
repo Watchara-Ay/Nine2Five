@@ -50,7 +50,7 @@ class addnewtask extends StatelessWidget {
                                     style: TextStyle(fontSize: 20)),
                                 Container(
                                   height:
-                                      MediaQuery.of(context).size.height / 14,
+                                      MediaQuery.of(context).size.height / 12,
                                   decoration: BoxDecoration(
                                       color: const Color.fromARGB(
                                           213, 190, 190, 190),
@@ -119,7 +119,7 @@ class addnewtask extends StatelessWidget {
                                     style: TextStyle(fontSize: 20)),
                                 Container(
                                   height:
-                                      MediaQuery.of(context).size.height / 14,
+                                      MediaQuery.of(context).size.height / 12,
                                   decoration: BoxDecoration(
                                       color: const Color.fromARGB(
                                           213, 190, 190, 190),
@@ -153,7 +153,7 @@ class addnewtask extends StatelessWidget {
                               children: [
                                 Container(
                                   height:
-                                      MediaQuery.of(context).size.height / 14,
+                                      MediaQuery.of(context).size.height / 12,
                                   decoration: BoxDecoration(
                                       color: const Color.fromARGB(
                                           213, 190, 190, 190),
@@ -188,7 +188,7 @@ class addnewtask extends StatelessWidget {
                               children: [
                                 Container(
                                   height:
-                                      MediaQuery.of(context).size.height / 14,
+                                      MediaQuery.of(context).size.height / 12,
                                   decoration: BoxDecoration(
                                       color: const Color.fromARGB(
                                           213, 190, 190, 190),
@@ -223,7 +223,7 @@ class addnewtask extends StatelessWidget {
                               children: [
                                 Container(
                                   height:
-                                      MediaQuery.of(context).size.height / 14,
+                                      MediaQuery.of(context).size.height / 12,
                                   decoration: BoxDecoration(
                                       color: const Color.fromARGB(
                                           213, 190, 190, 190),
@@ -249,7 +249,7 @@ class addnewtask extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(
-                            height: 50,
+                            height: 70,
                           ),
                           Container(
                             alignment: FractionalOffset.bottomCenter,
