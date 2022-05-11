@@ -23,7 +23,7 @@ class editprofilepage extends StatelessWidget {
           automaticallyImplyLeading: false,
           centerTitle: true,
           title: const Text("Edit profile"),
-          backgroundColor: Color.fromARGB(255, 255, 110, 110),
+          backgroundColor: const Color.fromARGB(255, 255, 110, 110),
         ),
         body: Container(
           child: Padding(
@@ -36,7 +36,7 @@ class editprofilepage extends StatelessWidget {
                       Container(
                         height: MediaQuery.of(context).size.height / 1.26,
                         width: MediaQuery.of(context).size.width,
-                        padding: EdgeInsets.all(20),
+                        padding: const EdgeInsets.all(20),
                         alignment: Alignment.bottomCenter,
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -93,7 +93,8 @@ class editprofilepage extends StatelessWidget {
                                 child: ElevatedButton(
                                   style: ButtonStyle(
                                     backgroundColor: MaterialStateProperty.all(
-                                        Color.fromARGB(255, 255, 110, 110)),
+                                        const Color.fromARGB(
+                                            255, 255, 110, 110)),
                                   ),
                                   child: const Text(
                                     "Confirm",
@@ -121,7 +122,7 @@ class editprofilepage extends StatelessWidget {
                       ),
                       Container(
                         height: 70,
-                        color: Color(0xff292e4e),
+                        color: const Color(0xff292e4e),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
@@ -133,9 +134,10 @@ class editprofilepage extends StatelessWidget {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => homePage()));
+                                            builder: (context) =>
+                                                const homePage()));
                                   }),
-                                  child: Text(
+                                  child: const Text(
                                     "Mytask",
                                     style: TextStyle(
                                         color: Colors.white, fontSize: 18),
@@ -154,9 +156,9 @@ class editprofilepage extends StatelessWidget {
                                             builder: (context) =>
                                                 profilepage()));
                                   }),
-                                  child: Text(
+                                  child: const Text(
                                     "Profile",
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         color: Colors.white, fontSize: 18),
                                   ),
                                 ),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:nine2five/model/taskinfo.dart';
-import 'package:nine2five/screen/taskdetail.dart';
 import 'package:nine2five/screen/today.dart';
 
 class addnewtask extends StatelessWidget {
@@ -26,7 +25,7 @@ class addnewtask extends StatelessWidget {
           backgroundColor: const Color.fromARGB(255, 255, 110, 110),
         ),
         body: Padding(
-          padding: EdgeInsets.all(30.0),
+          padding: const EdgeInsets.all(30.0),
           child: InkWell(
             child: SingleChildScrollView(
               child: Column(
@@ -37,9 +36,9 @@ class addnewtask extends StatelessWidget {
                         width: MediaQuery.of(context).size.width,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(16.0),
-                          color: Color.fromRGBO(255, 177, 134, 0.778),
+                          color: const Color.fromRGBO(255, 177, 134, 0.778),
                         ),
-                        padding: EdgeInsets.all(20),
+                        padding: const EdgeInsets.all(20),
                         alignment: Alignment.bottomCenter,
                         child: Column(children: [
                           Container(
@@ -47,19 +46,20 @@ class addnewtask extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("Task name",
+                                const Text("Task name",
                                     style: TextStyle(fontSize: 20)),
                                 Container(
                                   height:
                                       MediaQuery.of(context).size.height / 14,
                                   decoration: BoxDecoration(
-                                      color: Color.fromARGB(213, 190, 190, 190),
+                                      color: const Color.fromARGB(
+                                          213, 190, 190, 190),
                                       border: Border.all(width: 1),
-                                      borderRadius: BorderRadius.all(
+                                      borderRadius: const BorderRadius.all(
                                           Radius.circular(20))),
                                   child: Column(children: [
                                     TextFormField(
-                                      decoration: InputDecoration(
+                                      decoration: const InputDecoration(
                                         border: InputBorder.none,
                                       ),
                                       validator: RequiredValidator(
@@ -79,19 +79,20 @@ class addnewtask extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("Task detail",
+                                const Text("Task detail",
                                     style: TextStyle(fontSize: 20)),
                                 Container(
                                   height:
                                       MediaQuery.of(context).size.height / 6,
                                   decoration: BoxDecoration(
-                                      color: Color.fromARGB(213, 190, 190, 190),
+                                      color: const Color.fromARGB(
+                                          213, 190, 190, 190),
                                       border: Border.all(width: 1),
-                                      borderRadius: BorderRadius.all(
+                                      borderRadius: const BorderRadius.all(
                                           Radius.circular(20))),
                                   child: Column(children: [
                                     TextFormField(
-                                      decoration: InputDecoration(
+                                      decoration: const InputDecoration(
                                         border: InputBorder.none,
                                       ),
                                       validator: RequiredValidator(
@@ -111,18 +112,20 @@ class addnewtask extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("Notify", style: TextStyle(fontSize: 20)),
+                                const Text("Notify",
+                                    style: TextStyle(fontSize: 20)),
                                 Container(
                                   height:
                                       MediaQuery.of(context).size.height / 14,
                                   decoration: BoxDecoration(
-                                      color: Color.fromARGB(213, 190, 190, 190),
+                                      color: const Color.fromARGB(
+                                          213, 190, 190, 190),
                                       border: Border.all(width: 1),
-                                      borderRadius: BorderRadius.all(
+                                      borderRadius: const BorderRadius.all(
                                           Radius.circular(20))),
                                   child: Column(children: [
                                     TextFormField(
-                                      decoration: InputDecoration(
+                                      decoration: const InputDecoration(
                                         border: InputBorder.none,
                                       ),
                                       validator: RequiredValidator(
@@ -137,7 +140,7 @@ class addnewtask extends StatelessWidget {
                               ],
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 15,
                           ),
                           Container(
@@ -149,13 +152,14 @@ class addnewtask extends StatelessWidget {
                                   height:
                                       MediaQuery.of(context).size.height / 14,
                                   decoration: BoxDecoration(
-                                      color: Color.fromARGB(213, 190, 190, 190),
+                                      color: const Color.fromARGB(
+                                          213, 190, 190, 190),
                                       border: Border.all(width: 1),
-                                      borderRadius: BorderRadius.all(
+                                      borderRadius: const BorderRadius.all(
                                           Radius.circular(20))),
                                   child: Column(children: [
                                     TextFormField(
-                                      decoration: InputDecoration(
+                                      decoration: const InputDecoration(
                                         border: InputBorder.none,
                                         hintText: "Date",
                                       ),
@@ -171,7 +175,7 @@ class addnewtask extends StatelessWidget {
                               ],
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 15,
                           ),
                           Container(
@@ -183,13 +187,14 @@ class addnewtask extends StatelessWidget {
                                   height:
                                       MediaQuery.of(context).size.height / 14,
                                   decoration: BoxDecoration(
-                                      color: Color.fromARGB(213, 190, 190, 190),
+                                      color: const Color.fromARGB(
+                                          213, 190, 190, 190),
                                       border: Border.all(width: 1),
-                                      borderRadius: BorderRadius.all(
+                                      borderRadius: const BorderRadius.all(
                                           Radius.circular(20))),
                                   child: Column(children: [
                                     TextFormField(
-                                      decoration: InputDecoration(
+                                      decoration: const InputDecoration(
                                         border: InputBorder.none,
                                         hintText: "Start time",
                                       ),
@@ -205,7 +210,7 @@ class addnewtask extends StatelessWidget {
                               ],
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 15,
                           ),
                           Container(
@@ -217,13 +222,14 @@ class addnewtask extends StatelessWidget {
                                   height:
                                       MediaQuery.of(context).size.height / 14,
                                   decoration: BoxDecoration(
-                                      color: Color.fromARGB(213, 190, 190, 190),
+                                      color: const Color.fromARGB(
+                                          213, 190, 190, 190),
                                       border: Border.all(width: 1),
-                                      borderRadius: BorderRadius.all(
+                                      borderRadius: const BorderRadius.all(
                                           Radius.circular(20))),
                                   child: Column(children: [
                                     TextFormField(
-                                      decoration: InputDecoration(
+                                      decoration: const InputDecoration(
                                         border: InputBorder.none,
                                         hintText: "End time",
                                       ),
@@ -239,7 +245,7 @@ class addnewtask extends StatelessWidget {
                               ],
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 50,
                           ),
                           Container(
@@ -258,7 +264,7 @@ class addnewtask extends StatelessWidget {
                                                 builder: (context) =>
                                                     const homePage()),
                                           )),
-                                      child: Text(
+                                      child: const Text(
                                         "Submit",
                                         style: TextStyle(
                                             color: Color.fromARGB(255, 0, 0, 0),
@@ -278,7 +284,7 @@ class addnewtask extends StatelessWidget {
                                                 builder: (context) =>
                                                     const homePage()));
                                       }),
-                                      child: Text(
+                                      child: const Text(
                                         "Exit",
                                         style: TextStyle(
                                             color: Color.fromARGB(255, 0, 0, 0),

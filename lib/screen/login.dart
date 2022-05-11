@@ -100,8 +100,8 @@ class LoginPage extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton.icon(
                   style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all(Color.fromARGB(255, 0, 0, 0)),
+                    backgroundColor: MaterialStateProperty.all(
+                        const Color.fromARGB(255, 0, 0, 0)),
                   ),
                   icon: const Icon(Icons.login),
                   label: const Text("Login", style: TextStyle(fontSize: 32)),

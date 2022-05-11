@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nine2five/screen/addnewtask.dart';
 import 'package:nine2five/screen/login.dart';
 
 void main() {

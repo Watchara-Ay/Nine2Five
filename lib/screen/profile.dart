@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:nine2five/model/information.dart';
 import 'package:nine2five/screen/Editprofile.dart';
 import 'package:nine2five/screen/today.dart';
@@ -28,7 +27,7 @@ class profilepage extends StatelessWidget {
         body: Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          color: Color.fromARGB(0, 0, 0, 0),
+          color: const Color.fromARGB(0, 0, 0, 0),
           child: Padding(
             padding: const EdgeInsets.fromLTRB(0, 19, 0, 0),
             child: Form(
@@ -43,7 +42,7 @@ class profilepage extends StatelessWidget {
                     Container(
                       height: MediaQuery.of(context).size.height / 1.75,
                       width: MediaQuery.of(context).size.width,
-                      padding: EdgeInsets.all(20),
+                      padding: const EdgeInsets.all(20),
                       alignment: Alignment.bottomCenter,
                       child: Column(children: [
                         Column(
