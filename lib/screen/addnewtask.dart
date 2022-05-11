@@ -42,75 +42,209 @@ class addnewtask extends StatelessWidget {
                         padding: EdgeInsets.all(20),
                         alignment: Alignment.bottomCenter,
                         child: Column(children: [
-                          Text("Task name", style: TextStyle(fontSize: 20)),
-                          TextFormField(
-                            validator: RequiredValidator(
-                                errorText: "Please fill something!!!"),
-                            onSaved: (tname) {
-                              info.tname = tname!;
-                            },
+                          Container(
+                            alignment: Alignment.centerLeft,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("Task name",
+                                    style: TextStyle(fontSize: 20)),
+                                Container(
+                                  height:
+                                      MediaQuery.of(context).size.height / 14,
+                                  decoration: BoxDecoration(
+                                      color: Color.fromARGB(213, 190, 190, 190),
+                                      border: Border.all(width: 1),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(20))),
+                                  child: Column(children: [
+                                    TextFormField(
+                                      decoration: InputDecoration(
+                                        border: InputBorder.none,
+                                      ),
+                                      validator: RequiredValidator(
+                                          errorText:
+                                              "Please fill something!!!"),
+                                      onSaved: (Taskname) {
+                                        info.tname = Taskname!;
+                                      },
+                                    ),
+                                  ]),
+                                )
+                              ],
+                            ),
+                          ),
+                          Container(
+                            alignment: Alignment.centerLeft,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("Task detail",
+                                    style: TextStyle(fontSize: 20)),
+                                Container(
+                                  height:
+                                      MediaQuery.of(context).size.height / 6,
+                                  decoration: BoxDecoration(
+                                      color: Color.fromARGB(213, 190, 190, 190),
+                                      border: Border.all(width: 1),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(20))),
+                                  child: Column(children: [
+                                    TextFormField(
+                                      decoration: InputDecoration(
+                                        border: InputBorder.none,
+                                      ),
+                                      validator: RequiredValidator(
+                                          errorText:
+                                              "Please fill something!!!"),
+                                      onSaved: (Taskdetail) {
+                                        info.tdetail = Taskdetail!;
+                                      },
+                                    ),
+                                  ]),
+                                )
+                              ],
+                            ),
+                          ),
+                          Container(
+                            alignment: Alignment.centerLeft,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("Notify", style: TextStyle(fontSize: 20)),
+                                Container(
+                                  height:
+                                      MediaQuery.of(context).size.height / 14,
+                                  decoration: BoxDecoration(
+                                      color: Color.fromARGB(213, 190, 190, 190),
+                                      border: Border.all(width: 1),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(20))),
+                                  child: Column(children: [
+                                    TextFormField(
+                                      decoration: InputDecoration(
+                                        border: InputBorder.none,
+                                      ),
+                                      validator: RequiredValidator(
+                                          errorText:
+                                              "Please fill something!!!"),
+                                      onSaved: (priority) {
+                                        info.priority = priority!;
+                                      },
+                                    ),
+                                  ]),
+                                )
+                              ],
+                            ),
                           ),
                           SizedBox(
-                            height: 10,
+                            height: 15,
                           ),
-                          Text("Task detail", style: TextStyle(fontSize: 20)),
-                          TextFormField(
-                            validator: RequiredValidator(
-                                errorText: "Please fill something!!!"),
-                            onSaved: (Taskdetail) {
-                              info.tdetail = Taskdetail!;
-                            },
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text("Date", style: TextStyle(fontSize: 20)),
-                          TextFormField(
-                            validator: RequiredValidator(
-                                errorText: "Please fill something!!!"),
-                            onSaved: (Tdate) {
-                              info.tdate = Tdate! as DateTime;
-                            },
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text("priority", style: TextStyle(fontSize: 20)),
-                          TextFormField(
-                            validator: RequiredValidator(
-                                errorText: "Please fill age!!!"),
-                            onSaved: (priority) {
-                              info.priority = priority!;
-                            },
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text("Start time", style: TextStyle(fontSize: 20)),
-                          TextFormField(
-                            validator: RequiredValidator(
-                                errorText: "Please fill something!!!"),
-                            onSaved: (stime) {
-                              info.stime = stime! as DateTime;
-                            },
+                          Container(
+                            alignment: Alignment.centerLeft,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  height:
+                                      MediaQuery.of(context).size.height / 14,
+                                  decoration: BoxDecoration(
+                                      color: Color.fromARGB(213, 190, 190, 190),
+                                      border: Border.all(width: 1),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(20))),
+                                  child: Column(children: [
+                                    TextFormField(
+                                      decoration: InputDecoration(
+                                        border: InputBorder.none,
+                                        hintText: "Date",
+                                      ),
+                                      validator: RequiredValidator(
+                                          errorText:
+                                              "Please fill something!!!"),
+                                      onSaved: (Tdate) {
+                                        info.tdate = Tdate! as DateTime;
+                                      },
+                                    ),
+                                  ]),
+                                )
+                              ],
+                            ),
                           ),
                           SizedBox(
-                            height: 10,
+                            height: 15,
                           ),
-                          Text("End time", style: TextStyle(fontSize: 20)),
-                          TextFormField(
-                            validator: RequiredValidator(
-                                errorText: "Please fill something!!!"),
-                            onSaved: (etime) {
-                              info.etime = etime! as DateTime;
-                            },
+                          Container(
+                            alignment: Alignment.centerLeft,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  height:
+                                      MediaQuery.of(context).size.height / 14,
+                                  decoration: BoxDecoration(
+                                      color: Color.fromARGB(213, 190, 190, 190),
+                                      border: Border.all(width: 1),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(20))),
+                                  child: Column(children: [
+                                    TextFormField(
+                                      decoration: InputDecoration(
+                                        border: InputBorder.none,
+                                        hintText: "Start time",
+                                      ),
+                                      validator: RequiredValidator(
+                                          errorText:
+                                              "Please fill something!!!"),
+                                      onSaved: (stime) {
+                                        info.stime = stime! as DateTime;
+                                      },
+                                    ),
+                                  ]),
+                                )
+                              ],
+                            ),
                           ),
                           SizedBox(
-                            height: 17,
+                            height: 15,
+                          ),
+                          Container(
+                            alignment: Alignment.centerLeft,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  height:
+                                      MediaQuery.of(context).size.height / 14,
+                                  decoration: BoxDecoration(
+                                      color: Color.fromARGB(213, 190, 190, 190),
+                                      border: Border.all(width: 1),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(20))),
+                                  child: Column(children: [
+                                    TextFormField(
+                                      decoration: InputDecoration(
+                                        border: InputBorder.none,
+                                        hintText: "End time",
+                                      ),
+                                      validator: RequiredValidator(
+                                          errorText:
+                                              "Please fill something!!!"),
+                                      onSaved: (etime) {
+                                        info.etime = etime! as DateTime;
+                                      },
+                                    ),
+                                  ]),
+                                )
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 50,
                           ),
                           Container(
                             alignment: FractionalOffset.bottomCenter,
-                            height: 70,
+                            height: 21,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
@@ -157,81 +291,12 @@ class addnewtask extends StatelessWidget {
                             ),
                           ),
                         ])),
-                    // Text("Task name", style: TextStyle(fontSize: 20)),
-                    // TextFormField(
-                    //   validator: RequiredValidator(
-                    //       errorText: "Please fill something!!!"),
-                    //   onSaved: (tname) {
-                    //     info.tname = tname!;
-                    //   },
-                    // ),
-                    // SizedBox(
-                    //   height: 10,
-                    // ),
-                    // Text("Task detail", style: TextStyle(fontSize: 20)),
-                    // TextFormField(
-                    //   validator: RequiredValidator(
-                    //       errorText: "Please fill something!!!"),
-                    //   onSaved: (Taskdetail) {
-                    //     info.tdetail = Taskdetail!;
-                    //   },
-                    // ),
-                    // SizedBox(
-                    //   height: 10,
-                    // ),
-                    // Text("Date", style: TextStyle(fontSize: 20)),
-                    // TextFormField(
-                    //   validator: RequiredValidator(
-                    //       errorText: "Please fill something!!!"),
-                    //   onSaved: (Tdate) {
-                    //     info.tdate = Tdate! as DateTime;
-                    //   },
-                    // ),
-                    // SizedBox(
-                    //   height: 10,
-                    // ),
-                    // Text("priority", style: TextStyle(fontSize: 20)),
-                    // TextFormField(
-                    //   validator:
-                    //       RequiredValidator(errorText: "Please fill age!!!"),
-                    //   onSaved: (priority) {
-                    //     info.priority = priority!;
-                    //   },
-                    // ),
-                    // SizedBox(
-                    //   height: 10,
-                    // ),
-                    // Text("Start time", style: TextStyle(fontSize: 20)),
-                    // TextFormField(
-                    //   validator: RequiredValidator(
-                    //       errorText: "Please fill something!!!"),
-                    //   onSaved: (stime) {
-                    //     info.stime = stime! as DateTime;
-                    //   },
-                    // ),
-                    // SizedBox(
-                    //   height: 10,
-                    // ),
-                    // Text("End time", style: TextStyle(fontSize: 20)),
-                    // TextFormField(
-                    //   validator: RequiredValidator(
-                    //       errorText: "Please fill something!!!"),
-                    //   onSaved: (etime) {
-                    //     info.etime = etime! as DateTime;
-                    //   },
-                    // ),
-                    // SizedBox(
-                    //   height: 10,
-                    // ),
+                    //
                   ]),
             ),
           ),
         ),
       );
     });
-  }
-
-  _buildBody() {
-    return ListView();
   }
 }
