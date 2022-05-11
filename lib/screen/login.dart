@@ -22,8 +22,8 @@ class LoginPage extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         centerTitle: true,
-        title: new Text("Nine 2 Five",
-            style: const TextStyle(
+        title: const Text("Nine 2 Five",
+            style: TextStyle(
                 color: Color.fromARGB(255, 255, 255, 255),
                 fontWeight: FontWeight.w500,
                 fontFamily: "Roboto",
