@@ -92,6 +92,9 @@ class addnewtask extends StatelessWidget {
                                           Radius.circular(20))),
                                   child: Column(children: [
                                     TextFormField(
+                                      keyboardType: TextInputType.multiline,
+                                      minLines: 1,
+                                      maxLines: 5,
                                       decoration: const InputDecoration(
                                         border: InputBorder.none,
                                       ),
