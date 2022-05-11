@@ -41,7 +41,7 @@ class profilepage extends StatelessWidget {
                       child: Image.asset("assets/images/person.png"),
                     ),
                     Container(
-                      height: MediaQuery.of(context).size.height / 1.835,
+                      height: MediaQuery.of(context).size.height / 1.75,
                       width: MediaQuery.of(context).size.width,
                       padding: EdgeInsets.all(20),
                       alignment: Alignment.bottomCenter,

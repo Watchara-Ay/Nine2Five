@@ -27,14 +27,14 @@ class editprofilepage extends StatelessWidget {
         ),
         body: Container(
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(0, 38, 0, 0),
+            padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
             child: Form(
               child: SingleChildScrollView(
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        height: MediaQuery.of(context).size.height / 1.3,
+                        height: MediaQuery.of(context).size.height / 1.26,
                         width: MediaQuery.of(context).size.width,
                         padding: EdgeInsets.all(20),
                         alignment: Alignment.bottomCenter,
