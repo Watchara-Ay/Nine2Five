@@ -38,78 +38,86 @@ class editprofilepage extends StatelessWidget {
                         width: MediaQuery.of(context).size.width,
                         padding: EdgeInsets.all(20),
                         alignment: Alignment.bottomCenter,
-                        child: Column(children: [
-                          const Text("Firstname",
-                              style: TextStyle(fontSize: 20)),
-                          TextFormField(
-                            validator: RequiredValidator(
-                                errorText: "Please fill something!!!"),
-                            onSaved: (firstname) {
-                              info.firstname = firstname!;
-                            },
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          const Text("Lastname",
-                              style: TextStyle(fontSize: 20)),
-                          TextFormField(
-                            validator: RequiredValidator(
-                                errorText: "Please fill something!!!"),
-                            onSaved: (lastname) {
-                              info.lastname = lastname!;
-                            },
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          const Text("Age", style: TextStyle(fontSize: 20)),
-                          TextFormField(
-                            validator: RequiredValidator(
-                                errorText: "Please fill age!!!"),
-                            onSaved: (age) {
-                              info.age = age! as int;
-                            },
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          const Text("Gender", style: TextStyle(fontSize: 20)),
-                          TextFormField(
-                            validator: RequiredValidator(
-                                errorText: "Please fill something!!!"),
-                            onSaved: (gender) {
-                              info.gender = gender!;
-                            },
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          SizedBox(
-                            width: double.infinity,
-                            child: ElevatedButton(
-                              style: ButtonStyle(
-                                backgroundColor: MaterialStateProperty.all(
-                                    Color.fromARGB(255, 255, 110, 110)),
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text("Firstname",
+                                  style: TextStyle(fontSize: 20)),
+                              TextFormField(
+                                validator: RequiredValidator(
+                                    errorText: "Please fill something!!!"),
+                                onSaved: (firstname) {
+                                  info.firstname = firstname!;
+                                },
                               ),
-                              child: const Text("Confirm"),
-                              onPressed: () {
-                                if (formkey.currentState!.validate()) {
-                                  formkey.currentState!.save();
-                                  print("firstname = ${info.firstname} "
-                                      "lastname = ${info.lastname} "
-                                      "age = ${info.age} "
-                                      "gender = ${info.gender} ");
-                                  formkey.currentState!.reset();
-                                  Navigator.push(context,
-                                      MaterialPageRoute(builder: (context) {
-                                    return const homePage();
-                                  }));
-                                }
-                              },
-                            ),
-                          ),
-                        ]),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              const Text("Lastname",
+                                  style: TextStyle(fontSize: 20)),
+                              TextFormField(
+                                validator: RequiredValidator(
+                                    errorText: "Please fill something!!!"),
+                                onSaved: (lastname) {
+                                  info.lastname = lastname!;
+                                },
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              const Text("Age", style: TextStyle(fontSize: 20)),
+                              TextFormField(
+                                validator: RequiredValidator(
+                                    errorText: "Please fill age!!!"),
+                                onSaved: (age) {
+                                  info.age = age! as int;
+                                },
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              const Text("Gender",
+                                  style: TextStyle(fontSize: 20)),
+                              TextFormField(
+                                validator: RequiredValidator(
+                                    errorText: "Please fill something!!!"),
+                                onSaved: (gender) {
+                                  info.gender = gender!;
+                                },
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              SizedBox(
+                                width: 100,
+                                child: ElevatedButton(
+                                  style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty.all(
+                                        Color.fromARGB(255, 255, 110, 110)),
+                                  ),
+                                  child: const Text(
+                                    "Confirm",
+                                    style: TextStyle(
+                                        color: Color.fromARGB(255, 0, 0, 0),
+                                        fontSize: 18),
+                                  ),
+                                  onPressed: () {
+                                    if (formkey.currentState!.validate()) {
+                                      formkey.currentState!.save();
+                                      print("firstname = ${info.firstname} "
+                                          "lastname = ${info.lastname} "
+                                          "age = ${info.age} "
+                                          "gender = ${info.gender} ");
+                                      formkey.currentState!.reset();
+                                      Navigator.push(context,
+                                          MaterialPageRoute(builder: (context) {
+                                        return const homePage();
+                                      }));
+                                    }
+                                  },
+                                ),
+                              ),
+                            ]),
                       ),
                       Container(
                         height: 70,
