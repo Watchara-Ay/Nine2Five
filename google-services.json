@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "617216651257",
+    "project_id": "nine2five-63149",
+    "storage_bucket": "nine2five-63149.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:617216651257:android:3a70035993fde495db5728",
+        "android_client_info": {
+          "package_name": "com.example.nine2five"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "617216651257-hpvehos6peouloiv84untc99vpe3iuqp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6vvusOvQ85rMTtIojKH0UhRHqRRlt0_A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "617216651257-hpvehos6peouloiv84untc99vpe3iuqp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
