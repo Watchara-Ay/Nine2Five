@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "617216651257",
+    "firebase_url": "https://nine2five-63149-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "nine2five-63149",
     "storage_bucket": "nine2five-63149.appspot.com"
   },
@@ -29,6 +30,13 @@
             {
               "client_id": "617216651257-hpvehos6peouloiv84untc99vpe3iuqp.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "617216651257-38lct970jomm1p295qo7f6o5fiu21bko.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.nine2five"
+              }
             }
           ]
         }
