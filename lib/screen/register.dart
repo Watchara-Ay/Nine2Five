@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:nine2five/model/information.dart';
 import 'package:nine2five/screen/today.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -135,7 +136,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             onPressed: () {
                               if (formkey.currentState!.validate()) {
                                 formkey.currentState!.save();
-                                FirebaseFirestore.instance;
+                                FirebaseAuth.instance();
                                 formkey.currentState!.reset();
                                 Navigator.push(context,
                                     MaterialPageRoute(builder: (context) {
