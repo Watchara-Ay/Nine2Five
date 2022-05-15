@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
@@ -134,13 +135,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             onPressed: () {
                               if (formkey.currentState!.validate()) {
                                 formkey.currentState!.save();
-                                print("username = ${info.username} "
-                                    "firstname = ${info.firstname} "
-                                    "lastname = ${info.lastname} "
-                                    "age = ${info.age} "
-                                    "gender = ${info.gender} "
-                                    "email = ${info.email} "
-                                    "password = ${info.password}");
+                                FirebaseFirestore.instance;
                                 formkey.currentState!.reset();
                                 Navigator.push(context,
                                     MaterialPageRoute(builder: (context) {
