@@ -136,7 +136,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             onPressed: () {
                               if (formkey.currentState!.validate()) {
                                 formkey.currentState!.save();
-                                FirebaseAuth.instance();
+                                FirebaseAuth.instance;
                                 formkey.currentState!.reset();
                                 Navigator.push(context,
                                     MaterialPageRoute(builder: (context) {
