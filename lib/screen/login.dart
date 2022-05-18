@@ -90,8 +90,11 @@ class _LoginPageState extends State<LoginPage> {
               const Text("Email",
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
               TextFormField(
-                validator:
-                    RequiredValidator(errorText: "Please fill something!!!"),
+                validator: MultiValidator([
+                  RequiredValidator(errorText: "Please fill email"),
+                  EmailValidator(errorText: "Wrong email formation")
+                ]),
+                keyboardType: TextInputType.emailAddress,
                 onChanged: (email) {
                   info.email = email;
                 },
