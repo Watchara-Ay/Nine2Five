@@ -13,6 +13,13 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+  TextEditingController _userNameTextController = TextEditingController();
+  TextEditingController _firstnameTextController = TextEditingController();
+  TextEditingController _lastnameTextController = TextEditingController();
+  TextEditingController _ageTextController = TextEditingController();
+  TextEditingController _genderTextController = TextEditingController();
+  TextEditingController _emailTextController = TextEditingController();
+  TextEditingController _passwordTextController = TextEditingController();
   final formkey = GlobalKey<FormState>();
   information info = information(
       username: '',
@@ -23,6 +30,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       email: '',
       password: '');
   final Future<FirebaseApp> firebase = Firebase.initializeApp();
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -47,8 +55,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         TextFormField(
                           validator: RequiredValidator(
                               errorText: "Please fill something!!!"),
-                          onSaved: (username) {
-                            info.username = username!;
+                          controller: this._userNameTextController,
+                          onChanged: (username) {
+                            info.username = _userNameTextController as String;
                           },
                         ),
                         const SizedBox(
@@ -58,8 +67,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         TextFormField(
                           validator: RequiredValidator(
                               errorText: "Please fill something!!!"),
-                          onSaved: (firstname) {
-                            info.firstname = firstname!;
+                          controller: this._firstnameTextController,
+                          onChanged: (firstname) {
+                            info.firstname = _firstnameTextController as String;
                           },
                         ),
                         const SizedBox(
@@ -69,8 +79,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         TextFormField(
                           validator: RequiredValidator(
                               errorText: "Please fill something!!!"),
-                          onSaved: (lastname) {
-                            info.lastname = lastname!;
+                          controller: this._lastnameTextController,
+                          onChanged: (lastname) {
+                            info.lastname = _lastnameTextController as String;
                           },
                         ),
                         const SizedBox(
@@ -80,8 +91,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         TextFormField(
                           validator: RequiredValidator(
                               errorText: "Please fill age!!!"),
-                          onSaved: (age) {
-                            info.age = age! as int;
+                          controller: this._ageTextController,
+                          onChanged: (age) {
+                            info.age = _ageTextController as int;
                           },
                         ),
                         const SizedBox(
@@ -91,8 +103,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         TextFormField(
                           validator: RequiredValidator(
                               errorText: "Please fill something!!!"),
-                          onSaved: (gender) {
-                            info.gender = gender!;
+                          controller: this._genderTextController,
+                          onChanged: (gender) {
+                            info.gender = _genderTextController as String;
                           },
                         ),
                         const SizedBox(
@@ -104,9 +117,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             RequiredValidator(errorText: "Please fill email"),
                             EmailValidator(errorText: "Wrong email formation")
                           ]),
+                          controller: this._emailTextController,
                           keyboardType: TextInputType.emailAddress,
-                          onSaved: (email) {
-                            info.email = email!;
+                          onChanged: (email) {
+                            _emailTextController;
                           },
                         ),
                         const SizedBox(
@@ -117,8 +131,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           validator: RequiredValidator(
                               errorText: "Please fill something!!!"),
                           obscureText: true,
-                          onSaved: (password) {
-                            info.password = password!;
+                          controller: this._passwordTextController,
+                          onChanged: (password) {
+                            _passwordTextController;
                           },
                         ),
                         const SizedBox(
@@ -133,15 +148,30 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ),
                             child: const Text("Submit",
                                 style: TextStyle(fontSize: 26)),
-                            onPressed: () {
+                            onPressed: () async {
                               if (formkey.currentState!.validate()) {
                                 formkey.currentState!.save();
-                                FirebaseAuth.instance;
-                                formkey.currentState!.reset();
-                                Navigator.push(context,
-                                    MaterialPageRoute(builder: (context) {
-                                  return const homePage();
-                                }));
+                                try {
+                                  await FirebaseAuth.instance
+                                      .createUserWithEmailAndPassword(
+                                          email: _emailTextController.text,
+                                          password:
+                                              _passwordTextController.text)
+                                      .then((value) {
+                                    FirebaseAuth.instance
+                                        .signInWithEmailAndPassword(
+                                            email: _emailTextController.text,
+                                            password:
+                                                _passwordTextController.text);
+                                    (Navigator.push(context,
+                                        MaterialPageRoute(builder: (context) {
+                                      return const homePage();
+                                    })));
+                                  });
+                                  formkey.currentState!.reset();
+                                } on FirebaseAuthException catch (e) {
+                                  print(e.message);
+                                }
                               }
                             },
                           ),
