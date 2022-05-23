@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:nine2five/screen/login.dart';
 
@@ -7,6 +8,10 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
+  Future<void> initFirebase() async {
+    await Firebase.initializeApp();
+    print('Firebase initialized');
+  }
 
   // This widget is the root of your application.
   @override

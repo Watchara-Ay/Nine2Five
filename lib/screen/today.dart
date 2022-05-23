@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -33,6 +34,8 @@ class homePage extends StatefulWidget {
 }
 
 class _homePageState extends State<homePage> {
+  User? user = FirebaseAuth.instance.currentUser;
+  bool isUserEmailVerified = false;
   DateTime _selectedDay = DateTime.now();
   DateTime _focusedDay = DateTime.now();
   String filterType = "today";
@@ -258,6 +261,7 @@ class _homePageState extends State<homePage> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => LoginPage()));
+                              print(user);
                             });
                           }),
                           child: Text(
@@ -317,6 +321,22 @@ class _homePageState extends State<homePage> {
         ],
       ),
     );
+  }
+
+  Future<void> initFirebase() async {
+    await Firebase.initializeApp();
+    print('Firebase initialized');
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    user?.sendEmailVerification();
+    print('#######################');
+    print('Init state!!');
+    print('#######################');
+    initFirebase();
   }
 
   openTaskPop() {

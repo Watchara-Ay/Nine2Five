@@ -30,7 +30,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       email: '',
       password: '');
   final Future<FirebaseApp> firebase = Firebase.initializeApp();
-  FirebaseFirestore firestore = FirebaseFirestore.instance;
+  User? user = FirebaseAuth.instance.currentUser;
 
   @override
   Widget build(BuildContext context) {
@@ -55,9 +55,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         TextFormField(
                           validator: RequiredValidator(
                               errorText: "Please fill something!!!"),
-                          controller: this._userNameTextController,
+                          controller: _userNameTextController,
                           onChanged: (username) {
-                            info.username = _userNameTextController as String;
+                            _userNameTextController;
                           },
                         ),
                         const SizedBox(
@@ -67,9 +67,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         TextFormField(
                           validator: RequiredValidator(
                               errorText: "Please fill something!!!"),
-                          controller: this._firstnameTextController,
+                          controller: _firstnameTextController,
                           onChanged: (firstname) {
-                            info.firstname = _firstnameTextController as String;
+                            _firstnameTextController;
                           },
                         ),
                         const SizedBox(
@@ -79,9 +79,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         TextFormField(
                           validator: RequiredValidator(
                               errorText: "Please fill something!!!"),
-                          controller: this._lastnameTextController,
+                          controller: _lastnameTextController,
                           onChanged: (lastname) {
-                            info.lastname = _lastnameTextController as String;
+                            _lastnameTextController;
                           },
                         ),
                         const SizedBox(
@@ -91,9 +91,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         TextFormField(
                           validator: RequiredValidator(
                               errorText: "Please fill age!!!"),
-                          controller: this._ageTextController,
+                          controller: _ageTextController,
                           onChanged: (age) {
-                            info.age = _ageTextController as int;
+                            _ageTextController;
                           },
                         ),
                         const SizedBox(
@@ -103,9 +103,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         TextFormField(
                           validator: RequiredValidator(
                               errorText: "Please fill something!!!"),
-                          controller: this._genderTextController,
+                          controller: _genderTextController,
                           onChanged: (gender) {
-                            info.gender = _genderTextController as String;
+                            _genderTextController;
                           },
                         ),
                         const SizedBox(
@@ -117,7 +117,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             RequiredValidator(errorText: "Please fill email"),
                             EmailValidator(errorText: "Wrong email formation")
                           ]),
-                          controller: this._emailTextController,
+                          controller: _emailTextController,
                           keyboardType: TextInputType.emailAddress,
                           onChanged: (email) {
                             _emailTextController;
@@ -158,18 +158,29 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                           password:
                                               _passwordTextController.text)
                                       .then((value) {
+                                    user?.updateDisplayName(
+                                        _userNameTextController.text);
                                     FirebaseAuth.instance
                                         .signInWithEmailAndPassword(
                                             email: _emailTextController.text,
                                             password:
-                                                _passwordTextController.text);
-                                    (Navigator.push(context,
-                                        MaterialPageRoute(builder: (context) {
-                                      return const homePage();
-                                    })));
+                                                _passwordTextController.text)
+                                        .then((value) {
+                                      print(user);
+                                      (Navigator.push(context,
+                                          MaterialPageRoute(builder: (context) {
+                                        return const homePage();
+                                      })));
+                                    });
                                   });
                                   formkey.currentState!.reset();
                                 } on FirebaseAuthException catch (e) {
+                                  if (e.code == 'weak-password') {
+                                    print('The password provided is too weak.');
+                                  } else if (e.code == 'email-already-in-use') {
+                                    print(
+                                        'The account already exists for that email.');
+                                  }
                                   print(e.message);
                                 }
                               }

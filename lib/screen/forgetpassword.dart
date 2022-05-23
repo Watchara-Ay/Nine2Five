@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:nine2five/model/information.dart';
@@ -5,6 +7,9 @@ import 'package:nine2five/screen/login.dart';
 
 class forgetpassword extends StatelessWidget {
   final formkey = GlobalKey<FormState>();
+  final TextEditingController _emailTextController = TextEditingController();
+  TextEditingController _passwordTextController = TextEditingController();
+
   information info = information(
       username: '',
       firstname: '',
@@ -13,6 +18,11 @@ class forgetpassword extends StatelessWidget {
       gender: '',
       email: '',
       password: '');
+
+  Future<void> resetpassword() async {
+    await FirebaseAuth.instance
+        .sendPasswordResetEmail(email: _emailTextController.text.trim());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,38 +47,39 @@ class forgetpassword extends StatelessWidget {
                         RequiredValidator(errorText: "Please fill email"),
                         EmailValidator(errorText: "Wrong email formation")
                       ]),
+                      controller: this._emailTextController,
                       keyboardType: TextInputType.emailAddress,
-                      onSaved: (email) {
-                        info.email = email!;
+                      onChanged: (email) {
+                        this._emailTextController;
                       },
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const Text("Password", style: TextStyle(fontSize: 20)),
-                    TextFormField(
-                      validator: RequiredValidator(
-                          errorText: "Please fill something!!!"),
-                      obscureText: true,
-                      onSaved: (password) {
-                        info.password = password!;
-                      },
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const Text("New Password", style: TextStyle(fontSize: 20)),
-                    TextFormField(
-                      validator: RequiredValidator(
-                          errorText: "Please fill something!!!"),
-                      obscureText: true,
-                      onSaved: (password) {
-                        info.password = password!;
-                      },
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
+                    // const SizedBox(
+                    //   height: 10,
+                    // ),
+                    // const Text("Password", style: TextStyle(fontSize: 20)),
+                    // TextFormField(
+                    //   validator: RequiredValidator(
+                    //       errorText: "Please fill something!!!"),
+                    //   obscureText: true,
+                    //   onSaved: (password) {
+                    //     info.password = password!;
+                    //   },
+                    // ),
+                    // const SizedBox(
+                    //   height: 10,
+                    // ),
+                    // const Text("New Password", style: TextStyle(fontSize: 20)),
+                    // TextFormField(
+                    //   validator: RequiredValidator(
+                    //       errorText: "Please fill something!!!"),
+                    //   obscureText: true,
+                    //   onSaved: (password) {
+                    //     info.password = password!;
+                    //   },
+                    // ),
+                    // const SizedBox(
+                    //   height: 10,
+                    // ),
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
@@ -81,10 +92,12 @@ class forgetpassword extends StatelessWidget {
                         onPressed: () {
                           if (formkey.currentState!.validate()) {
                             formkey.currentState!.save();
-                            print("username = ${info.username} "
-                                "email = ${info.email} "
-                                "password = ${info.password}");
+                            // print("username = ${info.username} "
+                            //     "email = ${info.email} "
+                            //     "password = ${info.password}");
+                            resetpassword();
                             formkey.currentState!.reset();
+
                             Navigator.push(context,
                                 MaterialPageRoute(builder: (context) {
                               return LoginPage();
