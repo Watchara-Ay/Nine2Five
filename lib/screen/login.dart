@@ -152,7 +152,11 @@ class _LoginPageState extends State<LoginPage> {
                   icon: const Icon(Icons.login),
                   label: const Text("Login", style: TextStyle(fontSize: 32)),
                   onPressed: () {
-                    login();
+                    if (formkey.currentState!.validate()) {
+                      formkey.currentState!.save();
+                      login();
+                      formkey.currentState!.reset();
+                    }
                   },
                 ),
               ),
