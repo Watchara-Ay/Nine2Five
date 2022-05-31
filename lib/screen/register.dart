@@ -1,8 +1,13 @@
+import 'dart:async';
+import 'dart:ffi';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore_web/cloud_firestore_web.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:nine2five/model/information.dart';
+import 'package:nine2five/screen/login.dart';
 import 'package:nine2five/screen/today.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -12,25 +17,55 @@ class RegisterScreen extends StatefulWidget {
   State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
+class User {
+  String id;
+  String username;
+  String firstname;
+  String lastname;
+  int age;
+  String gender;
+
+  User({
+    this.id = '',
+    required this.username,
+    required this.firstname,
+    required this.lastname,
+    required this.age,
+    required this.gender,
+  });
+}
+
+Future createUser(user) async {
+  final docUser = FirebaseFirestore.instance.collection('users').doc();
+  user.id = docUser.id;
+
+  final json = toJSON();
+  await docUser.set(json);
+}
+
+Map<String, dynamic> toJSON() => {
+      'id': '',
+      'username': '',
+      'firstname': '',
+      'lastname': '',
+      'age': 0,
+      'gender': '',
+    };
+
 class _RegisterScreenState extends State<RegisterScreen> {
-  TextEditingController _userNameTextController = TextEditingController();
-  TextEditingController _firstnameTextController = TextEditingController();
-  TextEditingController _lastnameTextController = TextEditingController();
-  TextEditingController _ageTextController = TextEditingController();
-  TextEditingController _genderTextController = TextEditingController();
-  TextEditingController _emailTextController = TextEditingController();
-  TextEditingController _passwordTextController = TextEditingController();
+  final userNameTextController = TextEditingController();
+  final firstnameTextController = TextEditingController();
+  final lastnameTextController = TextEditingController();
+  final ageTextController = TextEditingController();
+  final genderTextController = TextEditingController();
+  final emailTextController = TextEditingController();
+  final passwordTextController = TextEditingController();
   final formkey = GlobalKey<FormState>();
-  information info = information(
-      username: '',
-      firstname: '',
-      lastname: '',
-      age: 0,
-      gender: '',
-      email: '',
-      password: '');
   final Future<FirebaseApp> firebase = Firebase.initializeApp();
-  User? user = FirebaseAuth.instance.currentUser;
+  final FirebaseAuth auth = FirebaseAuth.instance;
+
+  final controller = TextEditingController();
+  final controllerAge = TextEditingValue();
 
   @override
   Widget build(BuildContext context) {
@@ -55,9 +90,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         TextFormField(
                           validator: RequiredValidator(
                               errorText: "Please fill something!!!"),
-                          controller: _userNameTextController,
+                          controller: userNameTextController,
                           onChanged: (username) {
-                            _userNameTextController;
+                            userNameTextController;
                           },
                         ),
                         const SizedBox(
@@ -67,9 +102,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         TextFormField(
                           validator: RequiredValidator(
                               errorText: "Please fill something!!!"),
-                          controller: _firstnameTextController,
+                          controller: firstnameTextController,
                           onChanged: (firstname) {
-                            _firstnameTextController;
+                            firstnameTextController;
                           },
                         ),
                         const SizedBox(
@@ -79,9 +114,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         TextFormField(
                           validator: RequiredValidator(
                               errorText: "Please fill something!!!"),
-                          controller: _lastnameTextController,
+                          controller: lastnameTextController,
                           onChanged: (lastname) {
-                            _lastnameTextController;
+                            lastnameTextController;
                           },
                         ),
                         const SizedBox(
@@ -91,9 +126,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         TextFormField(
                           validator: RequiredValidator(
                               errorText: "Please fill age!!!"),
-                          controller: _ageTextController,
+                          controller: ageTextController,
                           onChanged: (age) {
-                            _ageTextController;
+                            ageTextController;
                           },
                         ),
                         const SizedBox(
@@ -103,9 +138,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         TextFormField(
                           validator: RequiredValidator(
                               errorText: "Please fill something!!!"),
-                          controller: _genderTextController,
+                          controller: genderTextController,
                           onChanged: (gender) {
-                            _genderTextController;
+                            genderTextController;
                           },
                         ),
                         const SizedBox(
@@ -117,10 +152,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             RequiredValidator(errorText: "Please fill email"),
                             EmailValidator(errorText: "Wrong email formation")
                           ]),
-                          controller: _emailTextController,
+                          controller: emailTextController,
                           keyboardType: TextInputType.emailAddress,
                           onChanged: (email) {
-                            _emailTextController;
+                            emailTextController;
                           },
                         ),
                         const SizedBox(
@@ -131,9 +166,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           validator: RequiredValidator(
                               errorText: "Please fill something!!!"),
                           obscureText: true,
-                          controller: this._passwordTextController,
+                          controller: passwordTextController,
                           onChanged: (password) {
-                            _passwordTextController;
+                            passwordTextController;
                           },
                         ),
                         const SizedBox(
@@ -148,42 +183,89 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ),
                             child: const Text("Submit",
                                 style: TextStyle(fontSize: 26)),
-                            onPressed: () async {
-                              if (formkey.currentState!.validate()) {
-                                formkey.currentState!.save();
-                                try {
-                                  await FirebaseAuth.instance
-                                      .createUserWithEmailAndPassword(
-                                          email: _emailTextController.text,
-                                          password:
-                                              _passwordTextController.text)
-                                      .then((value) {
-                                    user?.updateDisplayName(
-                                        _userNameTextController.text);
-                                    FirebaseAuth.instance
-                                        .signInWithEmailAndPassword(
-                                            email: _emailTextController.text,
-                                            password:
-                                                _passwordTextController.text)
-                                        .then((value) {
-                                      print(user);
-                                      (Navigator.push(context,
-                                          MaterialPageRoute(builder: (context) {
-                                        return const homePage();
-                                      })));
-                                    });
+                            onPressed: () {
+                              showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: Text('Are you sure?'),
+                                      content: Text(
+                                          'Are tou confirm to register? if yes then Email confirmation will send to your email'),
+                                      actions: <Widget>[
+                                        FlatButton(
+                                          onPressed: () async {
+                                            if (formkey.currentState!
+                                                .validate()) {
+                                              formkey.currentState!.save();
+                                              const user = User;
+                                              {
+                                                id:
+                                                '';
+                                                username:
+                                                userNameTextController;
+                                                firstname:
+                                                firstnameTextController;
+                                                lastname:
+                                                lastnameTextController;
+                                                age:
+                                                ageTextController;
+                                                gender:
+                                                genderTextController;
+                                              }
+                                              createUser(user);
+                                              try {
+                                                await FirebaseAuth.instance
+                                                    .createUserWithEmailAndPassword(
+                                                        email:
+                                                            emailTextController
+                                                                .text,
+                                                        password:
+                                                            passwordTextController
+                                                                .text)
+                                                    .then((value) {
+                                                  FirebaseAuth.instance
+                                                      .signInWithEmailAndPassword(
+                                                          email:
+                                                              emailTextController
+                                                                  .text,
+                                                          password:
+                                                              passwordTextController
+                                                                  .text)
+                                                      .then((value) {
+                                                    (Navigator.push(context,
+                                                        MaterialPageRoute(
+                                                            builder: (context) {
+                                                      return const homePage();
+                                                    })));
+                                                  });
+                                                });
+                                                formkey.currentState!.reset();
+                                              } on FirebaseAuthException catch (e) {
+                                                if (e.code == 'weak-password') {
+                                                  print(
+                                                      'The password provided is too weak.');
+                                                } else if (e.code ==
+                                                    'email-already-in-use') {
+                                                  print(
+                                                      'The account already exists for that email.');
+                                                }
+                                                print(e.message);
+                                              }
+                                            }
+                                          },
+                                          child: Text('Confirm'),
+                                        ),
+                                        FlatButton(
+                                            onPressed: () {
+                                              if (formkey.currentState!
+                                                  .validate()) {}
+                                              Navigator.pop(context);
+                                              formkey.currentState!.save();
+                                            },
+                                            child: Text('Cancal')),
+                                      ],
+                                    );
                                   });
-                                  formkey.currentState!.reset();
-                                } on FirebaseAuthException catch (e) {
-                                  if (e.code == 'weak-password') {
-                                    print('The password provided is too weak.');
-                                  } else if (e.code == 'email-already-in-use') {
-                                    print(
-                                        'The account already exists for that email.');
-                                  }
-                                  print(e.message);
-                                }
-                              }
                             },
                           ),
                         ),
