@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:nine2five/model/information.dart';
@@ -30,84 +29,72 @@ class forgetpassword extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: const Text("Forget Password Page"),
-        backgroundColor: Color.fromARGB(255, 255, 110, 110),
+        backgroundColor: const Color.fromARGB(255, 255, 110, 110),
       ),
-      body: Container(
-        child: Padding(
-          padding: const EdgeInsets.all(30.0),
-          child: Form(
-            key: formkey,
-            child: SingleChildScrollView(
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text("Email", style: TextStyle(fontSize: 20)),
-                    TextFormField(
-                      validator: MultiValidator([
-                        RequiredValidator(errorText: "Please fill email"),
-                        EmailValidator(errorText: "Wrong email formation")
-                      ]),
-                      controller: this._emailTextController,
-                      keyboardType: TextInputType.emailAddress,
-                      onChanged: (email) {
-                        this._emailTextController;
-                      },
-                    ),
-                    // const SizedBox(
-                    //   height: 10,
-                    // ),
-                    // const Text("Password", style: TextStyle(fontSize: 20)),
-                    // TextFormField(
-                    //   validator: RequiredValidator(
-                    //       errorText: "Please fill something!!!"),
-                    //   obscureText: true,
-                    //   onSaved: (password) {
-                    //     info.password = password!;
-                    //   },
-                    // ),
-                    // const SizedBox(
-                    //   height: 10,
-                    // ),
-                    // const Text("New Password", style: TextStyle(fontSize: 20)),
-                    // TextFormField(
-                    //   validator: RequiredValidator(
-                    //       errorText: "Please fill something!!!"),
-                    //   obscureText: true,
-                    //   onSaved: (password) {
-                    //     info.password = password!;
-                    //   },
-                    // ),
-                    // const SizedBox(
-                    //   height: 10,
-                    // ),
-                    SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all(
-                              Color.fromARGB(255, 255, 110, 110)),
-                        ),
-                        child: const Text("Submit",
-                            style: TextStyle(fontSize: 26)),
-                        onPressed: () {
-                          if (formkey.currentState!.validate()) {
-                            formkey.currentState!.save();
-                            // print("username = ${info.username} "
-                            //     "email = ${info.email} "
-                            //     "password = ${info.password}");
-                            resetpassword();
-                            formkey.currentState!.reset();
-
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) {
-                              return LoginPage();
-                            }));
-                          }
-                        },
-                      ),
-                    ),
-                  ]),
-            ),
+      body: Padding(
+        padding: const EdgeInsets.all(30.0),
+        child: Form(
+          key: formkey,
+          child: SingleChildScrollView(
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              const Text("Email", style: TextStyle(fontSize: 20)),
+              TextFormField(
+                validator: MultiValidator([
+                  RequiredValidator(errorText: "Please fill email"),
+                  EmailValidator(errorText: "Wrong email formation")
+                ]),
+                controller: this._emailTextController,
+                keyboardType: TextInputType.emailAddress,
+                onChanged: (email) {
+                  _emailTextController;
+                },
+              ),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(
+                        const Color.fromARGB(255, 255, 110, 110)),
+                  ),
+                  child: const Text("Submit", style: TextStyle(fontSize: 26)),
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: const Text('Are you sure?'),
+                            content: const Text(
+                                'Are you confirm to register? if yes then link to reset password will send to your email'),
+                            actions: <Widget>[
+                              FlatButton(
+                                onPressed: () async {
+                                  if (formkey.currentState!.validate()) {
+                                    formkey.currentState!.save();
+                                    resetpassword();
+                                    formkey.currentState!.reset();
+                                    Navigator.push(context,
+                                        MaterialPageRoute(builder: (context) {
+                                      return LoginPage();
+                                    }));
+                                  }
+                                },
+                                child: const Text('Confirm'),
+                              ),
+                              FlatButton(
+                                  onPressed: () {
+                                    if (formkey.currentState!.validate()) {}
+                                    Navigator.pop(context);
+                                    formkey.currentState!.save();
+                                  },
+                                  child: Text('Cancal')),
+                            ],
+                          );
+                        });
+                  },
+                ),
+              ),
+            ]),
           ),
         ),
       ),
